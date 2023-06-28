@@ -1,0 +1,3 @@
+1. Goto hosted zones -> select the domain(click)
+2. Crete record -> enter subdomain name, same ip in value, and 60 TTL
+3. follow the configuration file, paste virtual host code for subdomain, that's it.

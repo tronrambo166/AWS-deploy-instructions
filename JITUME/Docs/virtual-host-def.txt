@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerAdmin dtcreativeagency@gmail.com
+    ServerName nodalhealthcare.com	
+    ServerAlias www.nodalhealthcare.com
+    DocumentRoot /var/www/nodalhealthcare/public
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    <Directory /var/www/nodalhealthcare>
+	Require all granted
+	AllowOverride All
+	Options Indexes Multiviews FollowSymLinks
+    </Directory>
+</VirtualHost>

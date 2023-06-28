@@ -1,0 +1,13 @@
+1.Create an instance(EC2)
+2.Create Elastic Ip
+3.Goto to Ips and associate with instace
+4.Create a Rds instace if not already created
+4.Now goto instances, copy public Ipv4 of the instance
+5.Goto Hosted zones, create one with your domain
+6.Now create record here, A type(with value = public Ipv4) & CNAME type (value = domain name, ex:jitume.com)
+
+7.Now to to your domain provider(e.g. Namecheap,Bluehost) find Namservers under Domain, then choose Custom DNS/Nameserver, then add 4 custom Name server from AWS record(nameservers).
+
+Pretty much it! run the site to test if working!
+
+If you had emails running on that same domain, once you update the provided nameservers  from your created hosted zone your emails will stop working. You'll need to copy the MX Records from you registrar and updated them to your AWS Hosted Zone to get your emails working.

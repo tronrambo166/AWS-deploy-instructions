@@ -1,0 +1,52 @@
+1. Create Roles in IAM
+- Create role ->aws services, ec2, amazonEC2CodeDeploy
+- Create role ->aws services, use cases, CodeDeploy
+- select the EC2 role in IAM option in create/modify instance
+
+2. Goto code deploy
+- Create application
+- Create deployment group
+    - amazon ec2 instances
+    - service role-> 2nd role we created earlier (CodeDeploy)
+    - add key name & select instance
+    - leave everything
+
+3.Pipelinens
+- Create Pipeline
+  - select git version2
+  - connect to github->give access to releated repo
+  - deploy provider -> aws codedeploy
+
+4.Goto github repo
+*For existing instance
+ - create appspec.yml file/write configuration
+ - scripts folder
+ - short code in yml file, just files: hooks: & file_exists_behavior: OVERWRITE to avoid file exist error.
+
+* for new instance follow
+https://github.com/emad-zaamout/aws-codedeploy-bitbucket-laravel/tree/master 
+
+
+5. Install CodeDeploy Agent on your EC2 (Production) Instance
+Note, for the wget command below,  to find your bucket-name, and region-identifier go to AWS Resource kit bucket names by Region Documentation
+
+https://docs.aws.amazon.com/codedeploy/latest/userguide/resource-kit.html#resource-kit-bucket-names
+
+Depending on your AWS S3 Bucket region, you will find the values that you should use for bucket-name, add region-identifier.
+
+sudo apt update
+sudo apt install ruby-full
+sudo apt install wget
+cd /home/ubuntu 
+wget https://bucket-name.s3.region-identifier.amazonaws.com/latest/install
+chmod +x ./install sudo ./install
+ex:
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+chmod +x ./install 
+sudo ./install auto > /tmp/logfile
+
+Check if CodeDeploy status (or start it)
+
+sudo service codedeploy-agent status
+if not active
+- sudo service codedeploy-agent start

@@ -1,0 +1,10 @@
+Primary cause:
+1. my-ip issue
+go to security groups-> ssh dev access-> set ip address range instead of single ip address in source
+- single ip could be dynamic every time you restart you pc, causes error
+- say your ip is set like 37.111.212.27/32, and every time you restart pc it changes like 37.111.212.26, 37.111.212.30, 37.111.212.34 etc.
+-  to set range, in the source, select custome and write 37.111.212.0/24, that's it!
+
+Other causes:
+1.Check you firewall, disable them
+2.Check network ALCs in aws, make sure internet gatways is attched & routes are added with "ALLOW" in route table.
